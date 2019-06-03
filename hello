@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+<title>yapen쿼리변환기</title>
+<script>
+
+window.onload=function() {
+ document.getElementById("changebtn").onclick=processText;
+}
+
+function processText() {
+ var txtBox = document.getElementById("inputquery");
+ var lines = txtBox.value.split("\n");
+//prefix를 for문으로 붙여봐야징
+ txtBox = txtBox.value.replace(/mergePlaceSite/gi,"vp_lp_mergePlaceSite")
+ 					  .replace(/placeTheme/gi,"vp_lp_placeTheme")
+ 					  .replace(/placePensionBasic/gi,"vp_lp_placePensionBasic");
+	
+	 var   blk   = document.getElementById("result");
+	 blk.innerHTML  = txtBox;
+}
+</script>
+
+</head>
+<body>
+<div><p>yapen에서 짠 쿼리를 입력해주세요</p></div>
+<textarea id="inputquery" style = height:300px;width:700px; ></textarea>
+<div><button id="changebtn" style = height:50px;>▼사용할 수 있는 쿼리로 변환▼</button></div>
+<textarea id="result" style = height:300px;width:700px; ></textarea>
+
+</body>
