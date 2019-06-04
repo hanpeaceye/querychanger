@@ -8,16 +8,32 @@ window.onload=function() {
 }
 
 function processText() {
+ var tableList = ['mergePlaceSite','placeTheme','placePensionBasic'];
  var txtBox = document.getElementById("inputquery");
- var lines = txtBox.value.split("\n");
-//prefix를 for문으로 붙여봐야징
- txtBox = txtBox.value.replace(/mergePlaceSite/gi,"vp_lp_mergePlaceSite")
- 					  .replace(/placeTheme/gi,"vp_lp_placeTheme")
- 					  .replace(/placePensionBasic/gi,"vp_lp_placePensionBasic");
-	
-	 var   blk   = document.getElementById("result");
-	 blk.innerHTML  = txtBox;
+//table명을 제플린,redash용으로 변경
+
+// 노가다 제거
+ // txtBox = txtBox.value.replace(/mergePlaceSite/gi,"vp_lp_mergePlaceSite")
+ // 					  .replace(/placeTheme/gi,"vp_lp_placeTheme")
+ // 					  .replace(/placePensionBasic/gi,"vp_lp_placePensionBasic");
+for (var i = 0; i < tableList.length; i++){
+  var selectedTable = tableList[i];
+ txtBox = txtBox.value.replace(selectedTable,"vp_lp_" + selectedTable);
 }
+
+
+//
+// //모든 문자를 소문자로 변경
+//   txtBox = txtBox.toLowerCase()
+//
+// //대문자로 입력해야하는 항목만 대문자로 다시 변경
+//   txtBox = txtBox.replace(/'yps'/gi,"'YPS'")
+//                  .replace(/'ps'/gi,"'PS'")
+
+	 var changed = document.getElementById("result");
+
+	 changed.innerHTML  = txtBox;
+ }
 </script>
 
 </head>
