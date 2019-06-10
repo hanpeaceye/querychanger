@@ -8,38 +8,73 @@ window.onload=function() {
 }
 
 function processText() {
- var tableList = ['mergePlaceSite','placeTheme','placePensionBasic'];
+ var tableList = [
+'mergePlaceSite',
+'yanoljaRevView',
+'yanoljaAllPension',
+'yanoljaAllPension_channel',
+'pensionRevInfo',
+'pensionRevView',
+'pensionChannelInfo',
+'pensionRevOption',
+'pensionRevUserView',
+'mergePlaceSiteView',
+'placePensionRoom',
+'placePensionBasicView',
+'placePensionOption',
+'placePensionUse',
+'enterpriseMemberView',
+'enterpriseInfoView',
+'memberPointRawView',
+'memberPointLogView',
+'memberInfoView',
+'pensionPurchaseInfo',
+'pensionPurchase',
+'placePensionBlockLogView',
+'pensionItem',
+'placePensionBlock',
+'placePensionConnectMain',
+'pensionType',
+'couponPension',
+'placeTheme',
+'mergeTheme',
+'pensionFeeSale',
+'appAgreeView',
+'memberCeoView',
+'pensionChannel',
+'placePensionTheme'
+ ];
  var txtBox = document.getElementById("inputquery");
-//table명을 제플린,redash용으로 변경
+ var resultString = txtBox.value;
 
 // 노가다 제거
  // txtBox = txtBox.value.replace(/mergePlaceSite/gi,"vp_lp_mergePlaceSite")
  // 					  .replace(/placeTheme/gi,"vp_lp_placeTheme")
  // 					  .replace(/placePensionBasic/gi,"vp_lp_placePensionBasic");
+
+//table명을 제플린,redash용으로 변경
 for (var i = 0; i < tableList.length; i++){
   var selectedTable = tableList[i];
- txtBox = txtBox.value.replace(selectedTable,"vp_lp_" + selectedTable);
+ resultString = resultString.replace(selectedTable,"t1_db_travel_pensiondb.vp_lp_" + selectedTable);
 }
 
+//모든 문자를 소문자로 변경
+  resultString = resultString.toLowerCase()
 
-//
-// //모든 문자를 소문자로 변경
-//   txtBox = txtBox.toLowerCase()
-//
-// //대문자로 입력해야하는 항목만 대문자로 다시 변경
-//   txtBox = txtBox.replace(/'yps'/gi,"'YPS'")
-//                  .replace(/'ps'/gi,"'PS'")
+//대문자로 입력해야하는 항목만 대문자로 다시 변경
+  resultString = resultString.replace(/'yps'/gi,"'YPS'")
+                 .replace(/'ps'/gi,"'PS'")
 
 	 var changed = document.getElementById("result");
 
-	 changed.innerHTML  = txtBox;
+	 changed.innerHTML  = resultString;
  }
 </script>
 
 </head>
 <body>
 <div><p>yapen에서 짠 쿼리를 입력해주세요</p></div>
-<textarea id="inputquery" style = height:300px;width:700px; ></textarea>
+<textarea id="inputquery" style = height:300px;width:700px;font-size:15; ></textarea>
 <div><button id="changebtn" style = height:50px;>▼사용할 수 있는 쿼리로 변환▼</button></div>
 <textarea id="result" style = height:300px;width:700px; ></textarea>
 
